@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Escolha um Cálculo</h1>
+    <form action="result.php" method="post">
+        <label for="x">Informe o valor de x (base ou valor da equação):</label>
+        <input type="text" id="x" name="x" required><br><br>
+
+        <label for="y">Informe o valor de y (altura ou coeficiente da equação):</label>
+        <input type="text" id="y" name="y" required><br><br>
+
+        <label for="operador">Escolha o cálculo desejado:</label><br><br>
+        <select name="operador" id="operador">
+            <option value="area_quadrilatero">Área do Quadrilátero</option>
+            <option value="area_triangulo">Área do Triângulo</option>
+            <option value="equacao_primeiro_grau">Equação do 1º Grau</option>
+        </select><br><br>
+
+        <button type="submit">Calcular</button>
+    </form>
+</body>
+</html>
