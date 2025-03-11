@@ -1,42 +1,18 @@
 <?php
+include 'funcoes.php';
 
-$x = str_replace(",", ".", $_POST['x']);
-$y = str_replace(",", ".", $_POST['y']);
-$operador = $_POST['operador'];
+if (isset($_POST['raio']) && is_numeric($_POST['raio']) && $_POST['raio'] > 0) {
+    $raio = floatval($_POST['raio']);
+    
+    $area = calcular_area($raio);
+    $circunferencia = calcular_circunferencia($raio);
+    
+    echo "<h1>Resultado</h1>";
+    echo "A área do círculo é: " . number_format($area, 2) . " unidades quadradas.<br>";
+    echo "O comprimento da circunferência é: " . number_format($circunferencia, 2) . " unidades.<br>";
+} else {
 
-function area_quadrilatero($x, $y) {
-    return $x * $y;
+    echo "<h1>Erro</h1>";
+    echo "Por favor, informe um valor válido para o raio.";
 }
-
-function area_triangulo($x, $y) {
-    return ($x * $y) / 2;
-}
-
-function equacao_primeiro_grau($x, $y) {
-
-    if ($x != 0) {
-        return -$y / $x;
-    } else {
-        return "Equação inválida (coeficiente a não pode ser zero)";
-    }
-}
-
-echo "<h1>Resultado do Cálculo</h1>";
-
-switch ($operador) {
-    case 'area_quadrilatero':
-        echo "A área do quadrilátero é: " . area_quadrilatero($x, $y) . " unidades quadradas.";
-        break;
-    case 'area_triangulo':
-        echo "A área do triângulo é: " . area_triangulo($x, $y) . " unidades quadradas.";
-        break;
-    case 'equacao_primeiro_grau':
-        echo "A solução da equação {$x}x + {$y} = 0 é: " . equacao_primeiro_grau($x, $y);
-        break;
-    default:
-        echo "Operação inválida!";
-        break;
-}
-
-echo '<br /><a href="index.html">Voltar</a>';
 ?>
